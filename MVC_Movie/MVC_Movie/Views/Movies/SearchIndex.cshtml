@@ -1,13 +1,25 @@
 ﻿@model IEnumerable<MVC_Movie.Models.Movie>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "SearchIndex";
 }
 
-<h2>Index</h2>
+<h2>SearchIndex</h2>
 
 <p>
     @Html.ActionLink("Create New", "Create")
+
+    <!--   ---------------   -->
+    <!-- Función para filtro + que la dirección de la busqueda se quede en la barra de navegación-->
+     
+    
+<p>
+<p>
+    Genre: @Html.DropDownList("movieGenre", "All")
+    Title: @Html.TextBox("SearchString")<br />
+    <input type="submit" value="Filter" />
+</p>
+    
 </p>
 <table>
     <tr>
@@ -22,9 +34,6 @@
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Price)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Rating)
         </th>
         <th></th>
     </tr>
@@ -43,9 +52,6 @@
         <td>
             @Html.DisplayFor(modelItem => item.Price)
         </td>
-        <th>
-            @Html.DisplayNameFor(model => model.Rating)
-        </th>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
             @Html.ActionLink("Details", "Details", new { id=item.ID }) |
